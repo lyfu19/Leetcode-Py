@@ -1,0 +1,15 @@
+# Python 相关的缓存和编译文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Conda 相关的文件夹
+.conda/
+
+# VSCode 或 PyCharm 配置文件（如果使用）
+.vscode/
+.idea/
+
+# Jupyter Notebook 的检查点（如果有）
+.ipynb_checkpoints/
