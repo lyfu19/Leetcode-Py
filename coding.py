@@ -1,19 +1,8 @@
-import array
-import bisect
+from ast import If
 from collections import deque, Counter
-from curses.ascii import isalnum, isalpha
 import heapq
-from itertools import combinations, count
-from logging import root
-from operator import le
-import queue
-from re import L
+from itertools import combinations
 import re
-import stat
-import string
-from sys import maxsize
-import time
-from turtle import left, right, st
 from typing import Optional, List
 from unittest import result
 from ListNode import ListNode
@@ -2504,11 +2493,25 @@ class Solution:
         
         return totalSurface - overlaps
     
+    def getDecimalValue(self, head: Optional[ListNode]) -> int:
+        ans = 0
+        while head:
+            ans = ans * 2 + head.val
+            head = head.next
+        return ans
     
-
-
+    def findNumbers(self, nums: List[int]) -> int:
+        return sum(1 for num in nums if len(str(num)) % 2 == 0)
+    
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        rightMax = -1
+        for i in range(len(arr) - 1, -1, -1):
+            temp = rightMax
+            rightMax = max(rightMax, arr[i])
+            arr[i] = temp
+        return arr
                     
 
-grid = [[1,2],[3,4]]
-result = Solution().surfaceArea(grid)
+arr = [400]
+result = Solution().replaceElements(arr)
 print(result)
