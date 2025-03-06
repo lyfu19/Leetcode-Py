@@ -2511,7 +2511,18 @@ class Solution:
             arr[i] = temp
         return arr
                     
+    def sumZero(self, n: int) -> List[int]:
+        # ans = []
+        # if n % 2 != 0:
+        #     ans.append(0)
+        # repeat = n // 2
+        # for i in range(1, repeat + 1):
+        #     ans.append(i)
+        #     ans.append(-i)
+        # return ans
+        serial = range(1 - n, n, 2)
+        return list(serial)
 
-arr = [400]
-result = Solution().replaceElements(arr)
+n = 3
+result = Solution().sumZero(n)
 print(result)
