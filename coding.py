@@ -2523,6 +2523,30 @@ class Solution:
         serial = range(1 - n, n, 2)
         return list(serial)
 
-n = 3
-result = Solution().sumZero(n)
+# Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+# Characters ('j' to 'z') are represented by ('10#' to '26#') respectively.
+    def freqAlphabets(self, s: str) -> str:
+        num_to_char = {str(i): chr(i + 96) for i in range(1, 27)}
+        ans = ""
+        index = len(s) - 1
+        while index >= 0:
+            if s[index] == '#':
+                key = s[index-2:index]
+                ans += num_to_char[key]
+                index -= 3
+            else:
+                key = s[index]
+                ans += num_to_char[key]
+                index -= 1
+        return ans[::-1]
+
+    def decompressRLElist(self, nums: List[int]) -> List[int]:
+        ans = []
+        for i in range(1, len(nums), 2):
+            ans += [nums[i]] * nums[i-1]
+        return ans
+
+
+nums = [1,2,3,4]
+result = Solution().decompressRLElist(nums)
 print(result)
