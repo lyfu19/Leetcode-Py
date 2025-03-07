@@ -2562,7 +2562,17 @@ class Solution:
                 return [i, n-i]
         return [-1, -1]
 
+    def maximum69Number(self, num: int):
+        s_list = list(str(num))
+        for index, char in enumerate(s_list):
+            if char == '6':
+                s_list[index] = '9'
+                break
+        
+        return int(''.join(s_list))
 
-n = 11
-result = Solution().getNoZeroIntegers(n)
+
+
+num = 9669
+result = Solution().maximum69Number(num)
 print(result)
