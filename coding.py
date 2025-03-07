@@ -2571,8 +2571,12 @@ class Solution:
         
         return int(''.join(s_list))
 
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        sorted_arr = sorted(set(arr))
+        rank_map = { v: i + 1 for i, v in enumerate(sorted_arr) }
+        return [rank_map[num] for num in arr]
 
 
-num = 9669
-result = Solution().maximum69Number(num)
+arr = [40,10,20,30]
+result = Solution().arrayRankTransform(arr)
 print(result)
