@@ -2545,8 +2545,24 @@ class Solution:
         for i in range(1, len(nums), 2):
             ans += [nums[i]] * nums[i-1]
         return ans
+    
+    def getNoZeroIntegers(self, n: int) -> List[int]:
+        def containsZero(num):
+            if num == 0:
+                return True
+            num = abs(num)
+            while num:
+                if num % 10 == 0:
+                    return True
+                num //= 10
+            return False
+
+        for i in range(1, n // 2 + 1):
+            if not containsZero(i) and not containsZero(n-i):
+                return [i, n-i]
+        return [-1, -1]
 
 
-nums = [1,2,3,4]
-result = Solution().decompressRLElist(nums)
+n = 11
+result = Solution().getNoZeroIntegers(n)
 print(result)
