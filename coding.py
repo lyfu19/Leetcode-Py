@@ -2579,7 +2579,18 @@ class Solution:
     def removePalindromeSub(self, s: str) -> int:
         return 1 if s == s[::-1] else 2
 
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        sodilers = [(sum(row), index) for index, row in enumerate(mat)]
+        sodilers.sort()
+        return [index for _, index in sodilers[:k]]
 
-arr = [40,10,20,30]
-result = Solution().arrayRankTransform(arr)
+mat = [[1,1,0,0,0],
+        [1,1,1,1,0],
+        [1,0,0,0,0],
+        [1,1,0,0,0],
+        [1,1,1,1,1]
+        ]
+k = 3
+
+result = Solution().kWeakestRows(mat, k)
 print(result)
