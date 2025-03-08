@@ -2576,6 +2576,9 @@ class Solution:
         rank_map = { v: i + 1 for i, v in enumerate(sorted_arr) }
         return [rank_map[num] for num in arr]
 
+    def removePalindromeSub(self, s: str) -> int:
+        return 1 if s == s[::-1] else 2
+
 
 arr = [40,10,20,30]
 result = Solution().arrayRankTransform(arr)
