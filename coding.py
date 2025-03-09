@@ -2583,14 +2583,17 @@ class Solution:
         sodilers = [(sum(row), index) for index, row in enumerate(mat)]
         sodilers.sort()
         return [index for _, index in sodilers[:k]]
+    
+    def numberOfSteps(self, num: int) -> int:
+        steps = 0
+        while num > 0:
+            if num % 2 == 0:
+                num //= 2
+            else:
+                num -= 1
+            steps += 1
+        return steps
 
-mat = [[1,1,0,0,0],
-        [1,1,1,1,0],
-        [1,0,0,0,0],
-        [1,1,0,0,0],
-        [1,1,1,1,1]
-        ]
-k = 3
-
-result = Solution().kWeakestRows(mat, k)
+num = 14
+result = Solution().numberOfSteps(num)
 print(result)
