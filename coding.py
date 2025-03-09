@@ -1,4 +1,4 @@
-from ast import If
+from ast import If, Set
 from collections import deque, Counter
 import heapq
 from itertools import combinations
@@ -2593,6 +2593,16 @@ class Solution:
                 num -= 1
             steps += 1
         return steps
+
+    def checkIfExist(self, arr: List[int]) -> bool:
+        arr_set = set(arr)
+        for num in arr_set:
+            if num == 0:
+                if arr.count(0) > 1:
+                    return True
+            elif num * 2 in arr_set:
+                return True
+        return False
 
 num = 14
 result = Solution().numberOfSteps(num)
