@@ -2595,15 +2595,29 @@ class Solution:
         return steps
 
     def checkIfExist(self, arr: List[int]) -> bool:
-        arr_set = set(arr)
-        for num in arr_set:
-            if num == 0:
-                if arr.count(0) > 1:
-                    return True
-            elif num * 2 in arr_set:
+        seen = set()
+        for num in arr:
+            if num * 2 in seen or (num % 2 == 0 and num // 2 in seen):
                 return True
+            seen.add(num)
         return False
 
-num = 14
-result = Solution().numberOfSteps(num)
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        rows, columns = len(grid), len(grid[0])
+        m = rows - 1
+        n = 0
+
+        ans = 0
+
+        while m >= 0 and n < columns:
+            v = grid[m][n]
+            if v < 0:
+                ans += (columns - n)
+                m -= 1
+            else:
+                n += 1
+        return ans
+
+grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+result = Solution().countNegatives(grid)
 print(result)
