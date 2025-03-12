@@ -1,5 +1,6 @@
 from ast import If, Set
 from collections import deque, Counter
+from functools import cmp_to_key
 import heapq
 from itertools import combinations
 import re
@@ -2617,7 +2618,10 @@ class Solution:
             else:
                 n += 1
         return ans
+    
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        return sorted(arr, key=lambda x: (bin(x).count('1'), x))
 
-grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
-result = Solution().countNegatives(grid)
+arr = [0,1,2,3,4,5,6,7,8]
+result = Solution().sortByBits(arr)
 print(result)
