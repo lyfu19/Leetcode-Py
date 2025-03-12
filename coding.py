@@ -1,9 +1,12 @@
 from ast import If, Set
 from collections import deque, Counter
+from datetime import date
+import datetime
 from functools import cmp_to_key
 import heapq
 from itertools import combinations
 import re
+import string
 from typing import Optional, List
 from unittest import result
 from ListNode import ListNode
@@ -11,6 +14,7 @@ from TreeNode import TreeNode
 import math
 import numpy as np
 from Node import Node
+from datetime import datetime
 
 class MyStack:
 
@@ -2621,7 +2625,15 @@ class Solution:
     
     def sortByBits(self, arr: List[int]) -> List[int]:
         return sorted(arr, key=lambda x: (bin(x).count('1'), x))
+    
+    def daysBetweenDates(self, date1: string, date2: string) -> int:
+        d_format = "%Y-%m-%d"
+        d1 = datetime.strptime(date1, d_format)
+        d2 = datetime.strptime(date2, d_format)
+        days = (d1 - d2).days
+        return abs(days)
 
-arr = [0,1,2,3,4,5,6,7,8]
-result = Solution().sortByBits(arr)
+date1 = "2020-01-15"
+date2 = "2019-12-31"
+result = Solution().daysBetweenDates(date1, date2)
 print(result)
