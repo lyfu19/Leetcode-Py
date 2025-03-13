@@ -1,7 +1,5 @@
 from ast import If, Set
 from collections import deque, Counter
-from datetime import date
-import datetime
 from functools import cmp_to_key
 import heapq
 from itertools import combinations
@@ -2633,7 +2631,14 @@ class Solution:
         days = (d1 - d2).days
         return abs(days)
 
-date1 = "2020-01-15"
-date2 = "2019-12-31"
-result = Solution().daysBetweenDates(date1, date2)
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        sorted_num = sorted(nums)
+        num_map = {}
+        for i, v in enumerate(sorted_num):
+            num_map.setdefault(v, i)
+        ans = [num_map[n] for n in nums]
+        return ans
+
+nums = [8,1,2,2,3]
+result = Solution().smallerNumbersThanCurrent(nums)
 print(result)
