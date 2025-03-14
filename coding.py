@@ -2656,6 +2656,12 @@ class Solution:
         
         return ''.join(res)
 
-s = "aaaabbbbcccc"
-result = Solution().sortString(s)
+    def generateTheString(self, n: int) -> str:
+        if n % 2 == 0:
+            return 'a' * (n - 1) + 'b'
+        
+        return 'a' * n
+
+n = 4
+result = Solution().generateTheString(n)
 print(result)
