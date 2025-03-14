@@ -2662,6 +2662,21 @@ class Solution:
         
         return 'a' * n
 
-n = 4
-result = Solution().generateTheString(n)
-print(result)
+    def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
+        if not original:
+            return None
+        
+        if original is target:
+            return cloned
+        
+        left = self.getTargetCopy(original.left, cloned.left, target)
+        if left:
+            return left
+        
+        return self.getTargetCopy(original.right, cloned.right, target)
+
+
+tree = TreeNode.from_list([7,4,3,None,None,6,19])
+target = TreeNode(3)
+result = Solution().getTargetCopy(tree, tree, target)
+print(result.val)
