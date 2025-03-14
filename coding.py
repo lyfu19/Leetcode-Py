@@ -2639,6 +2639,23 @@ class Solution:
         ans = [num_map[n] for n in nums]
         return ans
 
-nums = [8,1,2,2,3]
-result = Solution().smallerNumbersThanCurrent(nums)
+    def sortString(self, s: str) -> str:
+        counter = Counter(s)
+        sorted_char = sorted(counter.keys())
+        res = []
+
+        while len(res) < len(s):
+            for char in sorted_char:
+                if counter[char] > 0:
+                    res.append(char)
+                    counter[char] -= 1
+            for char in reversed(sorted_char):
+                if counter[char] > 0:
+                    res.append(char)
+                    counter[char] -= 1
+        
+        return ''.join(res)
+
+s = "aaaabbbbcccc"
+result = Solution().sortString(s)
 print(result)
