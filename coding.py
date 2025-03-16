@@ -2675,8 +2675,12 @@ class Solution:
         
         return self.getTargetCopy(original.right, cloned.right, target)
 
+    def luckyNumbers(self, matrix: List[List[int]]) -> List[int]:
+        minimums = [min(subList) for subList in matrix]
+        maximums = [max(col) for col in zip(*matrix)]        
+        return list(set(minimums) & set(maximums))
 
-tree = TreeNode.from_list([7,4,3,None,None,6,19])
-target = TreeNode(3)
-result = Solution().getTargetCopy(tree, tree, target)
-print(result.val)
+
+matrix = [[3,7,8],[9,11,13],[15,16,17]]
+result = Solution().luckyNumbers(matrix)
+print(result)
