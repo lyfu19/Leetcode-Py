@@ -2680,7 +2680,22 @@ class Solution:
         maximums = [max(col) for col in zip(*matrix)]        
         return list(set(minimums) & set(maximums))
 
+    def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
+        set_arr2 = set(arr2)
+        ans = 0
 
-matrix = [[3,7,8],[9,11,13],[15,16,17]]
-result = Solution().luckyNumbers(matrix)
+        for num in arr1:
+            contain = False
+            for i in range(d + 1):
+                if num + i in set_arr2 or num - i in set_arr2:
+                    contain = True
+                    break
+            if not contain:
+                ans += 1
+        return ans
+
+arr1 = [4,5,8]
+arr2 = [10,9,1,8]
+d = 2
+result = Solution().findTheDistanceValue(arr1, arr2, d)
 print(result)
