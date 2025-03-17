@@ -2685,17 +2685,24 @@ class Solution:
         ans = 0
 
         for num in arr1:
-            contain = False
+            valid = True
             for i in range(d + 1):
                 if num + i in set_arr2 or num - i in set_arr2:
-                    contain = True
+                    valid = False
                     break
-            if not contain:
+            if valid:
                 ans += 1
         return ans
 
-arr1 = [4,5,8]
-arr2 = [10,9,1,8]
-d = 2
-result = Solution().findTheDistanceValue(arr1, arr2, d)
+    def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
+        ans = []
+        for i in range(len(index)):
+            m = index[i]
+            n = nums[i]
+            ans.insert(m, n)
+        return ans
+
+nums = [0,1,2,3,4]
+index = [0,1,2,2,1]
+result = Solution().createTargetArray(nums, index)
 print(result)
