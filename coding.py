@@ -2702,7 +2702,14 @@ class Solution:
             ans.insert(m, n)
         return ans
 
-nums = [0,1,2,3,4]
-index = [0,1,2,2,1]
-result = Solution().createTargetArray(nums, index)
+    def findLucky(self, arr: List[int]) -> int:
+        counted = Counter(arr)
+        for i in sorted(counted.keys(), reverse=True):
+            if i == counted[i]:
+                return i
+        return -1
+
+arr = [1,2,2,3,3,3]
+
+result = Solution().findLucky(arr)
 print(result)
