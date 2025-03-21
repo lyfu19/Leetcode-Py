@@ -2704,12 +2704,25 @@ class Solution:
 
     def findLucky(self, arr: List[int]) -> int:
         counted = Counter(arr)
-        for i in sorted(counted.keys(), reverse=True):
-            if i == counted[i]:
-                return i
-        return -1
+        lucky_numbers = [key for key, value in counted.items() if key == value]
+        return max(lucky_numbers) if lucky_numbers else -1
+    
+    def countLargestGroup(self, n: int) -> int:
+        def digitsSum(n: int) -> int:
+            sum = 0
+            while n > 0:
+                sum += n % 10
+                n //= 10
+            return sum
+        
+        dic = {}
+        for i in range(1, n + 1):
+            s = digitsSum(i)
+            dic[s] = dic.get(s, 0) + 1
+        maxinum = max(dic.values())
+        keys = [k for k, v in dic.items() if v == maxinum]
+        return len(keys)
 
-arr = [1,2,2,3,3,3]
-
-result = Solution().findLucky(arr)
+n = 13
+result = Solution().countLargestGroup(n)
 print(result)
