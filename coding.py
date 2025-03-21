@@ -2723,6 +2723,21 @@ class Solution:
         keys = [k for k, v in dic.items() if v == maxinum]
         return len(keys)
 
-n = 13
-result = Solution().countLargestGroup(n)
+    def minSubsequence(self, nums: List[int]) -> List[int]:
+        sorted_nums = sorted(nums, reverse=True)
+        sum_nums = sum(nums)
+        
+        ans = []
+        total = 0
+        for n in sorted_nums:
+            ans.append(n)
+            total += n
+            if total * 2 > sum_nums:
+                break
+        return ans
+        
+
+
+nums = [4,3,10,9,8]
+result = Solution().minSubsequence(nums)
 print(result)
