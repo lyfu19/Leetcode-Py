@@ -2736,8 +2736,18 @@ class Solution:
                 break
         return ans
         
+    def stringMatching(self, words: List[str]) -> List[str]:
+        sorted_words = sorted(words, key=len)
+        ans = set()
+        for i, v in enumerate(sorted_words):
+            for j in range(len(sorted_words) - 1, i, -1):
+                if v in sorted_words[j]:
+                    ans.add(v)
+                    break
+        return list(ans) 
 
 
-nums = [4,3,10,9,8]
-result = Solution().minSubsequence(nums)
+
+words = ["mass","as","hero","superhero"]
+result = Solution().stringMatching(words)
 print(result)
