@@ -2746,8 +2746,16 @@ class Solution:
                     break
         return list(ans) 
 
+    def minStartValue(self, nums: List[int]) -> int:
+        minimum = float('inf')
+        sum = 0
+        for n in nums:
+            sum += n
+            minimum = min(minimum, sum)
+        if minimum > 1:
+            return 1
+        return 1 - minimum
 
-
-words = ["mass","as","hero","superhero"]
-result = Solution().stringMatching(words)
+nums = [1, 2]
+result = Solution().minStartValue(nums)
 print(result)
