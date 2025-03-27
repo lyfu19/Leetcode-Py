@@ -2756,6 +2756,29 @@ class Solution:
             return 1
         return 1 - minimum
 
-nums = [1, 2]
-result = Solution().minStartValue(nums)
+    def reformat(self, s: str) -> str:
+        chars = []
+        digits = []
+        for c in s:
+            if c.islower():
+                chars.append(c)
+            else:
+                digits.append(c)
+        
+        if abs(len(chars) - len(digits)) > 1:
+            return ""
+        
+        if len(chars) < len(digits):
+            chars, digits = digits, chars
+        
+        ans = []
+        for i in range(len(s)):
+            if i % 2 == 0:
+                ans.append(chars.pop())
+            else:
+                ans.append(digits.pop())
+        return ''.join(ans)
+
+s = "a0b1c2"
+result = Solution().reformat(s)
 print(result)
