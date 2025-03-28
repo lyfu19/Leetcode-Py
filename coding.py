@@ -2792,8 +2792,14 @@ class Solution:
             max_score = max(max_score, left + right)
         return max_score
 
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        largest = max(candies)
+        ans = []
+        for n in candies:
+            ans.append(True if n + extraCandies >= largest else False)
+        return ans
 
-
-s = "1111"
-result = Solution().maxScore(s)
+candies = [2,3,5,1,3]
+extraCandies = 3
+result = Solution().kidsWithCandies(candies, extraCandies)
 print(result)
