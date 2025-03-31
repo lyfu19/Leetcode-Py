@@ -2810,6 +2810,19 @@ class Solution:
         
         return ""
 
-paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
-result = Solution().destCity(paths)
+    def kLengthApart(self, nums: List[int], k: int) -> bool:
+        preIndex = -1
+        for i, n in enumerate(nums):
+            if n == 1:
+                if preIndex != -1 and i - preIndex - 1 < k:
+                    return False
+                preIndex = i
+        return True
+
+
+
+
+nums = [0,0,0,0,0,0,0,0]
+k = 2
+result = Solution().kLengthApart(nums, k)
 print(result)
