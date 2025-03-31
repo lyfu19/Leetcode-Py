@@ -2799,7 +2799,17 @@ class Solution:
             ans.append(True if n + extraCandies >= largest else False)
         return ans
 
-candies = [2,3,5,1,3]
-extraCandies = 3
-result = Solution().kidsWithCandies(candies, extraCandies)
+    def destCity(self, paths: List[List[str]]) -> str:
+        starts, ends = zip(*paths)
+        set_starts = set(starts)
+        set_ends = set(ends)
+
+        for end in set_ends:
+            if end not in set_starts:
+                return end
+        
+        return ""
+
+paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+result = Solution().destCity(paths)
 print(result)
