@@ -2819,10 +2819,19 @@ class Solution:
                 preIndex = i
         return True
 
+    def maxPower(self, s: str) -> int:
+        maxPower = 1
+        curPower = 1
+        for i in range(1, len(s)):
+            if s[i] == s[i - 1]:
+                curPower += 1
+                maxPower = max(maxPower, curPower)
+            else:
+                curPower = 1
+        return maxPower
 
 
 
-nums = [0,0,0,0,0,0,0,0]
-k = 2
-result = Solution().kLengthApart(nums, k)
+s = "abbcccddddeeeeedcba"
+result = Solution().maxPower(s)
 print(result)
