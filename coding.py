@@ -2830,8 +2830,15 @@ class Solution:
                 curPower = 1
         return maxPower
 
+    def busyStudent(self, startTime: List[int], endTime: List[int], queryTime: int) -> int:
+        paired = zip(startTime, endTime)
+        busy = filter(lambda pair: pair[0] <= queryTime <= pair[1], paired)
+        return len(list(busy))
 
 
-s = "abbcccddddeeeeedcba"
-result = Solution().maxPower(s)
+startTime = [1,2,3]
+endTime = [3,2,7]
+queryTime = 4
+
+result = Solution().busyStudent(startTime, endTime, queryTime)
 print(result)
