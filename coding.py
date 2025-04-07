@@ -2835,10 +2835,14 @@ class Solution:
         busy = filter(lambda pair: pair[0] <= queryTime <= pair[1], paired)
         return len(list(busy))
 
+    def isPrefixOfWord(self, sentence: str, searchWord: str) -> int:
+        words = sentence.split(" ")
+        for i, v in enumerate(words):
+            if v.startswith(searchWord):
+                return i + 1
+        return -1
 
-startTime = [1,2,3]
-endTime = [3,2,7]
-queryTime = 4
-
-result = Solution().busyStudent(startTime, endTime, queryTime)
+sentence = "i love eating burger"
+searchWord = "burg"
+result = Solution().isPrefixOfWord(sentence, searchWord)
 print(result)
