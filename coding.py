@@ -2842,6 +2842,9 @@ class Solution:
                 return i + 1
         return -1
 
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        return sorted(target) == sorted(arr)
+
 sentence = "i love eating burger"
 searchWord = "burg"
 result = Solution().isPrefixOfWord(sentence, searchWord)
