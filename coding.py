@@ -2845,6 +2845,10 @@ class Solution:
     def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
         return sorted(target) == sorted(arr)
 
+    def maxProduct(self, nums: List[int]) -> int:
+        nums.sort()
+        return (nums[-1] - 1) * (nums[-2] - 1)
+
 sentence = "i love eating burger"
 searchWord = "burg"
 result = Solution().isPrefixOfWord(sentence, searchWord)
