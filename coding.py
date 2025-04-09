@@ -2849,7 +2849,14 @@ class Solution:
         nums.sort()
         return (nums[-1] - 1) * (nums[-2] - 1)
 
-sentence = "i love eating burger"
-searchWord = "burg"
-result = Solution().isPrefixOfWord(sentence, searchWord)
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        ans = []
+        for i in range(n):
+            ans.append(nums[i])
+            ans.append(nums[i + n])
+        return ans
+
+nums = [2,5,1,3,4,7]
+n = 3
+result = Solution().shuffle(nums, n)
 print(result)
