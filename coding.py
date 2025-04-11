@@ -2856,7 +2856,17 @@ class Solution:
             ans.append(nums[i + n])
         return ans
 
-nums = [2,5,1,3,4,7]
-n = 3
-result = Solution().shuffle(nums, n)
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        for i in range(len(prices)):
+            if i == len(prices) - 1:
+                break
+            for j in range(i + 1, len(prices)):
+                if prices[j] <= prices[i]:
+                    prices[i] -= prices[j]
+                    break
+        return prices
+
+
+prices = [8,4,6,2,3]
+result = Solution().finalPrices(prices)
 print(result)
