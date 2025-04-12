@@ -2866,7 +2866,12 @@ class Solution:
                     break
         return prices
 
+    def runningSum(self, nums: List[int]) -> List[int]:
+        for i in range(1, len(nums)):
+            nums[i] += nums[i - 1]
+        return nums
 
-prices = [8,4,6,2,3]
-result = Solution().finalPrices(prices)
+
+nums = [1,2,3,4]
+result = Solution().runningSum(nums)
 print(result)
