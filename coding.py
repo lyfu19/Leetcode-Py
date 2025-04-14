@@ -2878,7 +2878,9 @@ class Solution:
             ans ^= start
         return ans
 
-n = 4
-start = 3
-result = Solution().xorOperation(n, start)
+    def average(self, salary: List[int]) -> float:
+        return (sum(salary) - min(salary) - max(salary)) / (len(salary) - 2)
+
+salary = [4000,3000,1000,2000]
+result = Solution().average(salary)
 print(result)
