@@ -2871,7 +2871,14 @@ class Solution:
             nums[i] += nums[i - 1]
         return nums
 
+    def xorOperation(self, n: int, start: int) -> int:
+        ans = start
+        for i in range(n - 1):
+            start += 2
+            ans ^= start
+        return ans
 
-nums = [1,2,3,4]
-result = Solution().runningSum(nums)
+n = 4
+start = 3
+result = Solution().xorOperation(n, start)
 print(result)
