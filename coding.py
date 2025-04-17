@@ -2881,6 +2881,25 @@ class Solution:
     def average(self, salary: List[int]) -> float:
         return (sum(salary) - min(salary) - max(salary)) / (len(salary) - 2)
 
-salary = [4000,3000,1000,2000]
-result = Solution().average(salary)
+    def isPathCrossing(self, path: str) -> bool:
+        v = 0
+        h = 0
+        s = {(v, h)}
+        for c in path:
+            if c == "N":
+                v += 1
+            elif c == "S":
+                v -= 1
+            elif c == "E":
+                h += 1
+            elif c == "W":
+                h -= 1
+            if (v, h) in s:
+                return True
+            
+            s.add((v, h))
+        return False
+
+path = "NESWW"
+result = Solution().isPathCrossing(path)
 print(result)
