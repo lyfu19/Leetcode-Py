@@ -2922,7 +2922,14 @@ class Solution:
         
         return f"{year}-{month}-{day}"
 
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        count = Counter(nums)
+        ans = 0
+        for n in count.values():
+            ans += n * (n - 1) // 2
+        return ans
 
-date = "6th Jun 1933"
-result = Solution().reformatDate(date)
+
+nums = [1,1,1,1]
+result = Solution().numIdenticalPairs(nums)
 print(result)
