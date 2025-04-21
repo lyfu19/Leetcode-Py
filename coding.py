@@ -2928,8 +2928,20 @@ class Solution:
         for n in count.values():
             ans += n * (n - 1) // 2
         return ans
+    
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        ans = numBottles
+        empty = numBottles
 
+        while empty >= numExchange:
+            remain = empty % numExchange
+            exchange = empty // numExchange
+            ans += exchange
+            empty = remain + exchange
+        
+        return ans
 
-nums = [1,1,1,1]
-result = Solution().numIdenticalPairs(nums)
+numBottles = 15
+numExchange = 4
+result = Solution().numWaterBottles(numBottles, numExchange)
 print(result)
