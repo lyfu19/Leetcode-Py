@@ -2941,7 +2941,20 @@ class Solution:
         
         return ans
 
-numBottles = 15
-numExchange = 4
-result = Solution().numWaterBottles(numBottles, numExchange)
+    def countOdds(self, low: int, high: int) -> int:
+        # ans = 0
+        # if low % 2 != 0:
+        #     ans += 1
+        #     low += 1
+        # if high % 2 != 0:
+        #     ans += 1
+        #     high -= 1
+        
+        # return ans + (high - low) // 2
+        
+        return (high + 1) // 2 - low // 2
+
+low = 8
+high = 10
+result = Solution().countOdds(low, high)
 print(result)
