@@ -2954,7 +2954,13 @@ class Solution:
         
         return (high + 1) // 2 - low // 2
 
-low = 8
-high = 10
-result = Solution().countOdds(low, high)
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        ans = [''] * len(indices)
+        for i, v in enumerate(indices):
+            ans[v] = s[i]
+        return ''.join(ans)
+
+s = "abc"
+indices = [0, 1, 2]
+result = Solution().restoreString(s, indices)
 print(result)
