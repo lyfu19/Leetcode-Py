@@ -2960,7 +2960,24 @@ class Solution:
             ans[v] = s[i]
         return ''.join(ans)
 
-s = "abc"
-indices = [0, 1, 2]
-result = Solution().restoreString(s, indices)
+    def countGoodTriplets(self, arr: List[int], a: int, b: int, c: int) -> int:
+        count = 0
+        length = len(arr)
+
+        for i in range(length):
+            for j in range(i + 1, length):
+                if abs(arr[i] - arr[j]) > a:
+                    continue
+                for k in range(j + 1, length):
+                    if abs(arr[j] - arr[k]) <= b and abs(arr[i] - arr[k]) <= c:
+                        count += 1
+
+        return count
+
+arr = [3,0,1,1,9,7]
+a = 7
+b = 2
+c = 3
+
+result = Solution().countGoodTriplets(arr, a, b, c)
 print(result)
