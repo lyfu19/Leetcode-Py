@@ -2974,10 +2974,23 @@ class Solution:
 
         return count
 
-arr = [3,0,1,1,9,7]
-a = 7
-b = 2
-c = 3
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        left, right = 0, len(arr) - 1
 
-result = Solution().countGoodTriplets(arr, a, b, c)
+        while left <= right:
+            mid = (left + right) // 2
+            missing_before = arr[mid] - (mid + 1)
+
+            if missing_before < k:
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        return left + k
+
+
+arr = [2,3,4,7,11]
+k = 5
+
+result = Solution().findKthPositive(arr, k)
 print(result)
