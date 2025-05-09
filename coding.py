@@ -2987,10 +2987,17 @@ class Solution:
                 right = mid - 1
         
         return left + k
+    
+    def makeGood(self, s: string) -> string:
+        stack = []
+        for ch in s:
+            if stack and abs(ord(stack[-1]) - ord(ch)) == 32:
+                stack.pop()
+            else:
+                stack.append(ch)
+        return ''.join(stack)
 
 
-arr = [2,3,4,7,11]
-k = 5
-
-result = Solution().findKthPositive(arr, k)
+s = "s"
+result = Solution().makeGood(s)
 print(result)
