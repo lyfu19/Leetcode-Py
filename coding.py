@@ -4,6 +4,7 @@ from functools import cmp_to_key
 import heapq
 from itertools import combinations
 import re
+from shlex import join
 import string
 from typing import Optional, List
 from unittest import result
@@ -3008,6 +3009,13 @@ class Solution:
                 count = 0
         return False
 
-arr = [1,2,34,3,4,5,7,23,12]
-result = Solution().threeConsecutiveOdds(arr)
+    def thousandSeparator(self, n: int) -> str:
+        s = str(n)[::-1]
+        parts = [s[i:i+3] for i in range(0, len(s), 3)]
+        print(parts)
+        result = '.'.join(parts)[::-1]
+        return result
+
+n = 1234
+result = Solution().thousandSeparator(n)
 print(result)
